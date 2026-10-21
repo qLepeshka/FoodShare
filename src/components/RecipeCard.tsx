@@ -1,21 +1,22 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Heart, Clock, Users, Bookmark, MessageCircle, Share2, Flame } from 'lucide-react';
+import { Heart, Clock, Bookmark, MessageCircle } from 'lucide-react';
 import { Recipe } from '../types';
 
 interface RecipeCardProps {
   recipe: Recipe;
   onLike?: (id: string) => void;
   onSave?: (id: string) => void;
+  index?: number;
 }
 
-export default function RecipeCard({ recipe, onLike, onSave }: RecipeCardProps) {
+export default function RecipeCard({ recipe, onLike, onSave, index = 0 }: RecipeCardProps) {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   const difficultyColor = {
-    easy: 'bg-green-100 text-green-700',
-    medium: 'bg-yellow-100 text-yellow-700',
-    hard: 'bg-red-100 text-red-700',
+    easy: 'bg-[#B2BD7E]/20 text-[#6A795D] border-[#B2BD7E]/30',
+    medium: 'bg-[#D9D28B]/30 text-[#8E9162] border-[#D9D28B]/40',
+    hard: 'bg-[#8E9162]/20 text-[#6A795D] border-[#8E9162]/30',
   };
 
   const difficultyLabel = {
@@ -25,30 +26,30 @@ export default function RecipeCard({ recipe, onLike, onSave }: RecipeCardProps) 
   };
 
   return (
-    <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group border border-gray-100">
-      {/* Image */}
+    <div 
+      className="bg-white rounded-2xl overflow-hidden border border-[#D9D28B]/20 card-hover animate-fade-in-up opacity-0"
+      style={{ animationDelay: `${index * 0.1}s`, animationFillMode: 'forwards' }}
+    >
       <div className="relative aspect-[4/3] overflow-hidden">
         {!imageLoaded && (
-          <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-red-100 animate-pulse" />
+          <div className="absolute inset-0 bg-[#D9D28B]/20 animate-pulse" />
         )}
         <img
           src={recipe.image}
           alt={recipe.title}
-          className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ${
+          className={`w-full h-full object-cover transition-all duration-700 ${
             imageLoaded ? 'opacity-100' : 'opacity-0'
           }`}
           onLoad={() => setImageLoaded(true)}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#6A795D]/30 via-transparent to-transparent" />
 
-        {/* Top badges */}
         <div className="absolute top-3 left-3 flex gap-2">
-          <span className={`px-2 py-1 rounded-full text-xs font-medium ${difficultyColor[recipe.difficulty]}`}>
+          <span className={`px-2.5 py-1 rounded-full text-xs font-medium border ${difficultyColor[recipe.difficulty]}`} style={{ fontFamily: 'Old Standard TT, serif' }}>
             {difficultyLabel[recipe.difficulty]}
           </span>
         </div>
 
-        {/* Save button */}
         <button
           onClick={(e) => {
             e.preventDefault();
@@ -57,52 +58,53 @@ export default function RecipeCard({ recipe, onLike, onSave }: RecipeCardProps) 
           className="absolute top-3 right-3 w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-colors"
         >
           <Bookmark
-            size={16}
-            className={recipe.isSaved ? 'fill-orange-500 text-orange-500' : 'text-gray-600'}
+            size={14}
+            className={recipe.isSaved ? 'fill-[#6A795D] text-[#6A795D]' : 'text-[#8E9162]'}
           />
         </button>
 
-        {/* Bottom info */}
-        <div className="absolute bottom-3 left-3 right-3 flex items-center gap-2">
-          <div className="flex items-center gap-1 bg-white/90 backdrop-blur-sm rounded-full px-2 py-1">
-            <Clock size={12} className="text-gray-600" />
-            <span className="text-xs font-medium text-gray-700">{recipe.cookTime + recipe.prepTime} мин</span>
-          </div>
-          <div className="flex items-center gap-1 bg-white/90 backdrop-blur-sm rounded-full px-2 py-1">
-            <Flame size={12} className="text-orange-500" />
-            <span className="text-xs font-medium text-gray-700">{recipe.calories} ккал</span>
+        <div className="absolute bottom-3 left-3 flex items-center gap-2">
+          <div className="flex items-center gap-1.5 bg-white/90 backdrop-blur-sm rounded-full px-2.5 py-1">
+            <Clock size={12} className="text-[#6A795D]" />
+            <span className="text-xs font-medium text-[#6A795D]" style={{ fontFamily: 'Old Standard TT, serif' }}>{recipe.cookTime + recipe.prepTime} мин</span>
           </div>
         </div>
       </div>
 
-      {/* Content */}
       <div className="p-4">
         <Link to={`/recipe/${recipe.id}`} className="block">
-          <h3 className="font-bold text-gray-900 text-lg mb-1 line-clamp-1 group-hover:text-orange-600 transition-colors">
+          <h3 
+            className="font-bold text-[#3A3A2A] text-lg mb-1.5 line-clamp-1 hover:text-[#6A795D] transition-colors"
+            style={{ fontFamily: 'Playfair Display, serif' }}
+          >
             {recipe.title}
           </h3>
         </Link>
-        <p className="text-gray-500 text-sm mb-3 line-clamp-2">{recipe.description}</p>
+        <p 
+          className="text-[#8E9162] text-sm mb-3 line-clamp-2"
+          style={{ fontFamily: 'Old Standard TT, serif' }}
+        >
+          {recipe.description}
+        </p>
 
-        {/* Tags */}
-        <div className="flex flex-wrap gap-1 mb-3">
+        <div className="flex flex-wrap gap-1.5 mb-3">
           {recipe.tags.slice(0, 3).map((tag) => (
             <span
               key={tag}
-              className="px-2 py-0.5 bg-gray-100 text-gray-600 rounded-full text-xs"
+              className="px-2 py-0.5 bg-[#D9D28B]/15 text-[#8E9162] rounded-full text-xs border border-[#D9D28B]/20"
+              style={{ fontFamily: 'Old Standard TT, serif' }}
             >
               {tag}
             </span>
           ))}
         </div>
 
-        {/* Footer */}
-        <div className="flex items-center justify-between pt-3 border-t border-gray-100">
+        <div className="flex items-center justify-between pt-3 border-t border-[#D9D28B]/20">
           <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-full bg-gradient-to-br from-orange-400 to-red-400 flex items-center justify-center text-xs">
-              {recipe.author.avatar}
+            <div className="w-6 h-6 rounded-full bg-[#B2BD7E] flex items-center justify-center text-xs text-white font-bold" style={{ fontFamily: 'Playfair Display, serif' }}>
+              {recipe.author.name.charAt(0)}
             </div>
-            <span className="text-sm text-gray-600 font-medium">{recipe.author.name}</span>
+            <span className="text-sm text-[#8E9162]" style={{ fontFamily: 'Old Standard TT, serif' }}>{recipe.author.name}</span>
           </div>
 
           <div className="flex items-center gap-3">
@@ -114,14 +116,14 @@ export default function RecipeCard({ recipe, onLike, onSave }: RecipeCardProps) 
               className="flex items-center gap-1 text-sm"
             >
               <Heart
-                size={16}
-                className={recipe.isLiked ? 'fill-red-500 text-red-500' : 'text-gray-400 hover:text-red-400'}
+                size={14}
+                className={recipe.isLiked ? 'fill-[#8E9162] text-[#8E9162]' : 'text-[#B2BD7E] hover:text-[#8E9162]'}
               />
-              <span className="text-gray-500">{recipe.likes}</span>
+              <span className="text-[#8E9162] text-xs">{recipe.likes}</span>
             </button>
             <div className="flex items-center gap-1 text-sm">
-              <MessageCircle size={16} className="text-gray-400" />
-              <span className="text-gray-500">{recipe.comments.length}</span>
+              <MessageCircle size={14} className="text-[#B2BD7E]" />
+              <span className="text-[#8E9162] text-xs">{recipe.comments.length}</span>
             </div>
           </div>
         </div>

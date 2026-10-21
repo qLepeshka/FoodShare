@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Home, BookOpen, Calendar, Heart, User, ChefHat, X, Utensils } from 'lucide-react';
+import { Home, BookOpen, Calendar, Heart, User, ChefHat, X, Utensils, Leaf, Fish, Beef, Cake, Coffee, Soup } from 'lucide-react';
+import { categories } from '../data/mockData';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -14,27 +15,36 @@ const navItems = [
   { path: '/profile', icon: User, label: 'Профиль' },
 ];
 
+const categoryIcons: Record<string, any> = {
+  italian: Utensils,
+  japanese: Fish,
+  healthy: Leaf,
+  desserts: Cake,
+  meat: Beef,
+  fish: Fish,
+  breakfast: Coffee,
+  soups: Soup,
+};
+
 export default function Sidebar({ isOpen, onClose }: SidebarProps) {
   const location = useLocation();
 
   return (
     <>
-      {/* Overlay */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black/40 z-40 md:hidden"
+          className="fixed inset-0 bg-[#6A795D]/20 backdrop-blur-sm z-40 md:hidden animate-fade-in"
           onClick={onClose}
         />
       )}
 
-      {/* Sidebar */}
       <aside
-        className={`fixed top-16 left-0 bottom-0 w-64 bg-white border-r border-gray-200 z-40 transform transition-transform duration-300 ease-in-out
+        className={`fixed top-16 left-0 bottom-0 w-64 bg-[#FAFAF5] border-r border-[#D9D28B]/30 z-40 transform transition-transform duration-300 ease-in-out
           ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}
       >
-        <div className="p-4">
-          <button onClick={onClose} className="md:hidden absolute top-4 right-4 p-1 rounded hover:bg-gray-100">
-            <X size={20} />
+        <div className="p-4 h-full overflow-y-auto">
+          <button onClick={onClose} className="md:hidden absolute top-4 right-4 p-1 rounded hover:bg-[#D9D28B]/20">
+            <X size={20} className="text-[#6A795D]" />
           </button>
 
           <nav className="space-y-1 mt-4">
@@ -47,43 +57,47 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                   onClick={onClose}
                   className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${
                     isActive
-                      ? 'bg-gradient-to-r from-orange-50 to-red-50 text-orange-600 font-medium shadow-sm'
-                      : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                      ? 'bg-[#D9D28B]/30 text-[#6A795D] font-medium'
+                      : 'text-[#8E9162] hover:bg-[#D9D28B]/15 hover:text-[#6A795D]'
                   }`}
+                  style={{ fontFamily: 'Old Standard TT, serif' }}
                 >
-                  <item.icon size={20} />
+                  <item.icon size={18} />
                   <span>{item.label}</span>
                 </Link>
               );
             })}
           </nav>
 
-          {/* Categories */}
           <div className="mt-8">
-            <h3 className="px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
+            <h3 className="px-4 text-xs font-semibold text-[#8E9162]/60 uppercase tracking-wider mb-3" style={{ fontFamily: 'Playfair Display, serif' }}>
               Категории
             </h3>
             <nav className="space-y-1">
-              {['🍕 Итальянская', '🍣 Японская', '🥗 Здоровое', '🍰 Десерты', '🥩 Мясо', '🐟 Рыба'].map(
-                (cat) => (
-                  <button
-                    key={cat}
-                    className="w-full text-left px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg transition-colors"
+              {categories.map((cat) => {
+                const Icon = categoryIcons[cat.id] || Utensils;
+                return (
+                  <Link
+                    key={cat.id}
+                    to={`/?category=${cat.id}`}
+                    onClick={onClose}
+                    className="flex items-center gap-3 px-4 py-2.5 text-sm text-[#8E9162] hover:bg-[#D9D28B]/15 hover:text-[#6A795D] rounded-lg transition-colors"
+                    style={{ fontFamily: 'Old Standard TT, serif' }}
                   >
-                    {cat}
-                  </button>
-                )
-              )}
+                    <Icon size={16} />
+                    <span>{cat.name}</span>
+                  </Link>
+                );
+              })}
             </nav>
           </div>
 
-          {/* API Info */}
-          <div className="mt-8 mx-4 p-3 bg-blue-50 rounded-xl">
-            <div className="flex items-center gap-2 mb-1">
-              <Utensils size={14} className="text-blue-500" />
-              <span className="text-xs font-semibold text-blue-700">API Ready</span>
+          <div className="mt-8 mx-4 p-4 bg-[#B2BD7E]/15 rounded-xl border border-[#B2BD7E]/20">
+            <div className="flex items-center gap-2 mb-1.5">
+              <Utensils size={14} className="text-[#6A795D]" />
+              <span className="text-xs font-semibold text-[#6A795D]" style={{ fontFamily: 'Playfair Display, serif' }}>API Ready</span>
             </div>
-            <p className="text-xs text-blue-600">
+            <p className="text-xs text-[#8E9162]" style={{ fontFamily: 'Old Standard TT, serif' }}>
               Готово к интеграции с .NET бэкендом
             </p>
           </div>
