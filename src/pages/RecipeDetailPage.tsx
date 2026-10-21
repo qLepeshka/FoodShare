@@ -66,6 +66,7 @@ export default function RecipeDetailPage() {
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#6A795D]/60 via-transparent to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#C8553D] via-[#D4A574] to-transparent"></div>
         <div className="absolute bottom-6 left-6 right-6">
           <div className="flex gap-2 mb-3">
             <span className={`px-3 py-1 rounded-full text-xs font-medium border ${difficultyColor[recipe.difficulty]}`} style={{ fontFamily: 'Old Standard TT, serif' }}>
@@ -256,7 +257,7 @@ export default function RecipeDetailPage() {
               </div>
             </div>
             <p className="text-sm text-[#8E9162] mb-4" style={{ fontFamily: 'Old Standard TT, serif' }}>{recipe.author.bio}</p>
-            <button className="w-full py-2 bg-[#6A795D] text-white rounded-xl font-medium text-sm hover:bg-[#4A5541] transition-all" style={{ fontFamily: 'Old Standard TT, serif' }}>
+            <button className="w-full py-2 bg-[#C8553D] text-white rounded-xl font-medium text-sm hover:bg-[#A8442F] transition-all shadow-sm" style={{ fontFamily: 'Old Standard TT, serif' }}>
               Подписаться
             </button>
           </div>
@@ -267,12 +268,12 @@ export default function RecipeDetailPage() {
                 onClick={() => setLiked(!liked)}
                 className={`w-full flex items-center justify-center gap-2 py-3 rounded-xl font-medium text-sm transition-all ${
                   liked
-                    ? 'bg-[#8E9162]/15 text-[#6A795D] border border-[#8E9162]/30'
+                    ? 'bg-[#C8553D]/10 text-[#C8553D] border border-[#C8553D]/30'
                     : 'bg-[#D9D28B]/10 text-[#8E9162] hover:bg-[#D9D28B]/20 border border-[#D9D28B]/20'
                 }`}
                 style={{ fontFamily: 'Old Standard TT, serif' }}
               >
-                <Heart size={16} className={liked ? 'fill-[#6A795D]' : ''} />
+                <Heart size={16} className={liked ? 'fill-[#C8553D]' : ''} />
                 {liked ? 'Вам нравится' : 'Нравится'} ({recipe.likes})
               </button>
               <button

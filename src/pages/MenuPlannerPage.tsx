@@ -66,7 +66,7 @@ export default function MenuPlannerPage() {
           <h1 className="text-3xl font-bold text-[#6A795D]" style={{ fontFamily: 'Playfair Display, serif' }}>Планировщик меню</h1>
           <p className="text-[#8E9162] mt-1" style={{ fontFamily: 'Old Standard TT, serif' }}>Спланируйте питание на неделю — {totalMeals} блюд запланировано</p>
         </div>
-        <button onClick={generateShoppingList} className="flex items-center gap-2 px-4 py-2 bg-[#6A795D] text-white rounded-xl font-medium text-sm hover:bg-[#4A5541] transition-colors" style={{ fontFamily: 'Old Standard TT, serif' }}>
+        <button onClick={generateShoppingList} className="flex items-center gap-2 px-4 py-2 bg-[#C8553D] text-white rounded-xl font-medium text-sm hover:bg-[#A8442F] transition-colors shadow-sm" style={{ fontFamily: 'Old Standard TT, serif' }}>
           <ShoppingCart size={16} />
           Список покупок
         </button>

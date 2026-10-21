@@ -90,6 +90,7 @@ export default function HomePage() {
       <div className="mb-8 bg-[#D9D28B]/20 border border-[#D9D28B]/30 rounded-3xl p-8 md:p-10 relative overflow-hidden animate-fade-in-up">
         <div className="absolute top-0 right-0 w-64 h-64 bg-[#B2BD7E]/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#8E9162]/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-2xl"></div>
+        <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#C8553D] via-[#D4A574] to-transparent"></div>
         
         <div className="relative z-10">
           <h1 
@@ -106,11 +107,11 @@ export default function HomePage() {
           </p>
           <div className="flex gap-4">
             <div className="bg-white/60 backdrop-blur-sm rounded-xl px-5 py-3 border border-[#D9D28B]/30">
-              <div className="text-2xl font-bold text-[#6A795D]" style={{ fontFamily: 'Playfair Display, serif' }}>{recipeList.length}</div>
+              <div className="text-2xl font-bold text-[#C8553D]" style={{ fontFamily: 'Playfair Display, serif' }}>{recipeList.length}</div>
               <div className="text-xs text-[#8E9162]" style={{ fontFamily: 'Old Standard TT, serif' }}>Рецептов</div>
             </div>
             <div className="bg-white/60 backdrop-blur-sm rounded-xl px-5 py-3 border border-[#D9D28B]/30">
-              <div className="text-2xl font-bold text-[#6A795D]" style={{ fontFamily: 'Playfair Display, serif' }}>5</div>
+              <div className="text-2xl font-bold text-[#D4A574]" style={{ fontFamily: 'Playfair Display, serif' }}>5</div>
               <div className="text-xs text-[#8E9162]" style={{ fontFamily: 'Old Standard TT, serif' }}>Авторов</div>
             </div>
             <div className="bg-white/60 backdrop-blur-sm rounded-xl px-5 py-3 border border-[#D9D28B]/30">
@@ -180,7 +181,7 @@ export default function HomePage() {
             onClick={() => setActiveFilter(tab.id)}
             className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all ${
               activeFilter === tab.id
-                ? 'bg-[#6A795D] text-white'
+                ? 'bg-[#C8553D] text-white shadow-sm'
                 : 'bg-white text-[#8E9162] hover:bg-[#D9D28B]/15 border border-[#D9D28B]/30'
             }`}
             style={{ fontFamily: 'Old Standard TT, serif' }}

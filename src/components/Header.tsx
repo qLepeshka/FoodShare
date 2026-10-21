@@ -53,7 +53,7 @@ export default function Header({ onMenuToggle }: HeaderProps) {
           </button>
           <Link
             to="/create"
-            className="flex items-center gap-1.5 px-4 py-2 bg-[#6A795D] text-white rounded-full hover:bg-[#4A5541] transition-all text-sm font-medium btn-elegant"
+            className="flex items-center gap-1.5 px-4 py-2 bg-[#C8553D] text-white rounded-full hover:bg-[#A8442F] transition-all text-sm font-medium btn-elegant shadow-sm"
             style={{ fontFamily: 'Old Standard TT, serif' }}
           >
             <Plus size={16} />
@@ -61,11 +61,11 @@ export default function Header({ onMenuToggle }: HeaderProps) {
           </Link>
           <button className="p-2 rounded-full hover:bg-[#D9D28B]/20 transition-colors relative">
             <Bell size={18} className="text-[#6A795D]" />
-            <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-[#8E9162] rounded-full"></span>
+            <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-[#C8553D] rounded-full animate-pulse"></span>
           </button>
           <Link
             to="/profile"
-            className="w-9 h-9 rounded-full bg-[#B2BD7E] flex items-center justify-center text-white font-bold text-sm hover:bg-[#8E9162] transition-all"
+            className="w-9 h-9 rounded-full bg-gradient-to-br from-[#D4A574] to-[#C8553D] flex items-center justify-center text-white font-bold text-sm hover:shadow-md transition-all ring-2 ring-white"
             style={{ fontFamily: 'Playfair Display, serif' }}
           >
             A

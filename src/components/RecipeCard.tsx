@@ -117,7 +117,7 @@ export default function RecipeCard({ recipe, onLike, onSave, index = 0 }: Recipe
             >
               <Heart
                 size={14}
-                className={recipe.isLiked ? 'fill-[#8E9162] text-[#8E9162]' : 'text-[#B2BD7E] hover:text-[#8E9162]'}
+                className={recipe.isLiked ? 'fill-[#C8553D] text-[#C8553D]' : 'text-[#B2BD7E] hover:text-[#C8553D]'}
               />
               <span className="text-[#8E9162] text-xs">{recipe.likes}</span>
             </button>
