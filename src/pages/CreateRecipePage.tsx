@@ -239,7 +239,7 @@ export default function CreateRecipePage() {
 
         <button
           type="submit"
-          className="w-full py-4 bg-[#C8553D] text-white rounded-2xl font-bold text-lg hover:bg-[#A8442F] hover:shadow-xl transition-all btn-elegant shadow-md"
+          className="w-full py-4 bg-[#D4764E] text-white rounded-2xl font-bold text-lg hover:bg-[#B85A35] hover:shadow-xl transition-all btn-elegant shadow-md"
           style={{ fontFamily: 'Playfair Display, serif' }}
         >
           Опубликовать рецепт

@@ -69,13 +69,13 @@ export default function ProfilePage() {
           </div>
 
           <div className="flex gap-2 mt-4 flex-wrap">
-            <span className="flex items-center gap-1.5 px-3 py-1 bg-[#D4A574]/15 text-[#C8553D] rounded-full text-xs font-medium border border-[#D4A574]/30" style={{ fontFamily: 'Old Standard TT, serif' }}>
+            <span className="flex items-center gap-1.5 px-3 py-1 bg-[#D4A574]/15 text-[#D4764E] rounded-full text-xs font-medium border border-[#D4A574]/30" style={{ fontFamily: 'Old Standard TT, serif' }}>
               <Award size={12} /> Топ автор
             </span>
-            <span className="flex items-center gap-1.5 px-3 py-1 bg-[#B2BD7E]/15 text-[#6A795D] rounded-full text-xs font-medium border border-[#B2BD7E]/20" style={{ fontFamily: 'Old Standard TT, serif' }}>
+            <span className="flex items-center gap-1.5 px-3 py-1 bg-[#B8C5A0]/15 text-[#7A8B6F] rounded-full text-xs font-medium border border-[#B8C5A0]/25" style={{ fontFamily: 'Old Standard TT, serif' }}>
               <Calendar size={12} /> 1 год на сайте
             </span>
-            <span className="flex items-center gap-1.5 px-3 py-1 bg-[#C8553D]/10 text-[#C8553D] rounded-full text-xs font-medium border border-[#C8553D]/20" style={{ fontFamily: 'Old Standard TT, serif' }}>
+            <span className="flex items-center gap-1.5 px-3 py-1 bg-[#D4764E]/10 text-[#D4764E] rounded-full text-xs font-medium border border-[#D4764E]/20" style={{ fontFamily: 'Old Standard TT, serif' }}>
               <Heart size={12} /> 500+ лайков
             </span>
           </div>

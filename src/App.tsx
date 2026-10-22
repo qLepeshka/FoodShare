@@ -14,7 +14,7 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen" style={{ backgroundColor: '#FAFAF5' }}>
+      <div className="min-h-screen" style={{ backgroundColor: '#F5EFE0' }}>
         <Header onMenuToggle={() => setSidebarOpen(!sidebarOpen)} />
         <div className="flex">
           <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />

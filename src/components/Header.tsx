@@ -11,20 +11,20 @@ export default function Header({ onMenuToggle }: HeaderProps) {
   const [showSearch, setShowSearch] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#FAFAF5]/95 backdrop-blur-md border-b border-[#D9D28B]/30">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#F5EFE0]/95 backdrop-blur-md border-b border-[#D4A574]/20">
       <div className="flex items-center justify-between h-16 px-4 lg:px-8">
         <div className="flex items-center gap-3">
           <button
             onClick={onMenuToggle}
-            className="md:hidden p-2 rounded-lg hover:bg-[#D9D28B]/20 transition-colors"
+            className="md:hidden p-2 rounded-lg hover:bg-[#E8DCC4]/40 transition-colors"
           >
-            <Menu size={22} className="text-[#6A795D]" />
+            <Menu size={22} className="text-[#7A8B6F]" />
           </button>
           <Link to="/" className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-full bg-[#6A795D] flex items-center justify-center">
+            <div className="w-9 h-9 rounded-full bg-[#D4764E] flex items-center justify-center shadow-sm">
               <span className="text-white font-bold text-sm" style={{ fontFamily: 'Playfair Display, serif' }}>F</span>
             </div>
-            <span className="text-xl font-bold text-[#6A795D] hidden sm:block" style={{ fontFamily: 'Playfair Display, serif' }}>
+            <span className="text-xl font-bold text-[#7A8B6F] hidden sm:block" style={{ fontFamily: 'Playfair Display, serif' }}>
               FoodShare
             </span>
           </Link>
@@ -32,13 +32,13 @@ export default function Header({ onMenuToggle }: HeaderProps) {
 
         <div className="hidden md:flex flex-1 max-w-md mx-8">
           <div className="relative w-full">
-            <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#8E9162]" />
+            <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#9BA87D]" />
             <input
               type="text"
               placeholder="Поиск рецептов..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 bg-[#D9D28B]/15 border border-[#D9D28B]/30 rounded-full text-sm focus:bg-white focus:border-[#8E9162] focus:ring-2 focus:ring-[#B2BD7E]/20 outline-none transition-all placeholder:text-[#8E9162]/60"
+              className="w-full pl-10 pr-4 py-2 bg-[#E8DCC4]/30 border border-[#D4A574]/30 rounded-full text-sm focus:bg-white focus:border-[#9BA87D] focus:ring-2 focus:ring-[#B8C5A0]/30 outline-none transition-all placeholder:text-[#9BA87D]/60"
               style={{ fontFamily: 'Old Standard TT, serif' }}
             />
           </div>
@@ -47,25 +47,25 @@ export default function Header({ onMenuToggle }: HeaderProps) {
         <div className="flex items-center gap-2">
           <button
             onClick={() => setShowSearch(!showSearch)}
-            className="md:hidden p-2 rounded-lg hover:bg-[#D9D28B]/20 transition-colors"
+            className="md:hidden p-2 rounded-lg hover:bg-[#E8DCC4]/40 transition-colors"
           >
-            <Search size={18} className="text-[#6A795D]" />
+            <Search size={18} className="text-[#7A8B6F]" />
           </button>
           <Link
             to="/create"
-            className="flex items-center gap-1.5 px-4 py-2 bg-[#C8553D] text-white rounded-full hover:bg-[#A8442F] transition-all text-sm font-medium btn-elegant shadow-sm"
+            className="flex items-center gap-1.5 px-4 py-2 bg-[#D4764E] text-white rounded-full hover:bg-[#B85A35] transition-all text-sm font-medium btn-elegant shadow-sm"
             style={{ fontFamily: 'Old Standard TT, serif' }}
           >
             <Plus size={16} />
             <span className="hidden sm:inline">Создать</span>
           </Link>
-          <button className="p-2 rounded-full hover:bg-[#D9D28B]/20 transition-colors relative">
-            <Bell size={18} className="text-[#6A795D]" />
-            <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-[#C8553D] rounded-full animate-pulse"></span>
+          <button className="p-2 rounded-full hover:bg-[#E8DCC4]/40 transition-colors relative">
+            <Bell size={18} className="text-[#7A8B6F]" />
+            <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-[#D4764E] rounded-full animate-pulse"></span>
           </button>
           <Link
             to="/profile"
-            className="w-9 h-9 rounded-full bg-gradient-to-br from-[#D4A574] to-[#C8553D] flex items-center justify-center text-white font-bold text-sm hover:shadow-md transition-all ring-2 ring-white"
+            className="w-9 h-9 rounded-full bg-gradient-to-br from-[#D4A574] to-[#D4764E] flex items-center justify-center text-white font-bold text-sm hover:shadow-md transition-all ring-2 ring-white"
             style={{ fontFamily: 'Playfair Display, serif' }}
           >
             A
@@ -74,20 +74,20 @@ export default function Header({ onMenuToggle }: HeaderProps) {
       </div>
 
       {showSearch && (
-        <div className="md:hidden px-4 pb-3 border-t border-[#D9D28B]/20 animate-fade-in">
+        <div className="md:hidden px-4 pb-3 border-t border-[#D4A574]/20 animate-fade-in">
           <div className="relative mt-3">
-            <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#8E9162]" />
+            <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#9BA87D]" />
             <input
               type="text"
               placeholder="Поиск рецептов..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-10 py-2 bg-[#D9D28B]/15 border border-[#D9D28B]/30 rounded-full text-sm focus:bg-white focus:ring-2 focus:ring-[#B2BD7E]/20 outline-none placeholder:text-[#8E9162]/60"
+              className="w-full pl-10 pr-10 py-2 bg-[#E8DCC4]/30 border border-[#D4A574]/30 rounded-full text-sm focus:bg-white focus:ring-2 focus:ring-[#B8C5A0]/30 outline-none placeholder:text-[#9BA87D]/60"
               autoFocus
               style={{ fontFamily: 'Old Standard TT, serif' }}
             />
             <button onClick={() => setShowSearch(false)} className="absolute right-3 top-1/2 -translate-y-1/2">
-              <X size={16} className="text-[#8E9162]" />
+              <X size={16} className="text-[#9BA87D]" />
             </button>
           </div>
         </div>
